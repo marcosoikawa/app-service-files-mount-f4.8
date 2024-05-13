@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,10 +24,54 @@ namespace app_files_mount
             string strFilePath3;
             string strFolder;
             string strFolder2;
-            string strFolder3;
-            strFolder = Server.MapPath("./files/");
-            strFolder2 = Server.MapPath("./files/important/");
-            strFolder3 = Server.MapPath("./files/important/superimportant/");
+            string strFolder3;            
+            string baseFolder;
+
+            //choose your option:
+            int option = 3;
+
+            //FileShare:
+            string fileshare = "\\\\MAOIKA-240402\\sharefiles\\";
+            string virtualpath = "/files/";
+            string phisicalpath = "C:\\mounts\\mountpath\\";
+
+
+            int.TryParse(ConfigurationManager.AppSettings["option"], out option);
+            fileshare = Convert.ToString(ConfigurationManager.AppSettings["fileshare"]);
+            virtualpath = Convert.ToString(ConfigurationManager.AppSettings["virtualpath"]);
+            phisicalpath = Convert.ToString(ConfigurationManager.AppSettings["phisicalpath"]);
+
+            switch (option)
+            {                
+                case 1:
+                    {
+                        baseFolder = fileshare;
+                        strFolder = baseFolder;
+                        strFolder2 = string.Format("{0}important\\", baseFolder);
+                        strFolder3 = string.Format("{0}important\\superimportant\\", baseFolder);
+                        break;
+
+                    }
+                case 2:
+                    {                        
+                        baseFolder = virtualpath;
+                        strFolder = Server.MapPath(baseFolder);
+                        strFolder2 = Server.MapPath(string.Format("{0}important/", baseFolder));
+                        strFolder3 = Server.MapPath(string.Format("{0}important/superimportant/", baseFolder));
+                        break;
+
+                    }
+                default:
+                    {                        
+                        baseFolder = phisicalpath;
+                        strFolder = baseFolder;
+                        strFolder2 = string.Format("{0}important\\", baseFolder);
+                        strFolder3 = string.Format("{0}important\\superimportant\\", baseFolder);
+                        break;
+
+                    }
+            }
+
             // Retrieve the name of the file that is posted.
             strFileName = oFile.PostedFile.FileName;
             strFileName = Path.GetFileName(strFileName);
@@ -50,19 +96,19 @@ namespace app_files_mount
 
                 if (File.Exists(strFilePath))
                 {
-                    lblUploadResult.Text = strFileName + " already exists on the server!";
+                    lblUploadResult.Text = strFileName + " already exists on the server " + strFilePath;
                 }
                 else
                 {
                     oFile.PostedFile.SaveAs(strFilePath);
                     oFile.PostedFile.SaveAs(strFilePath2);
                     oFile.PostedFile.SaveAs(strFilePath3);
-                    lblUploadResult.Text = strFileName + " has been successfully uploaded.";
+                    lblUploadResult.Text = strFileName + " has been successfully uploaded on: " + strFilePath;
                 }
             }
             else
             {
-                lblUploadResult.Text = "Click 'Chose File' to select the file to upload.";
+                lblUploadResult.Text = "Click 'Choose File' to select the file to upload.";
             }
             // Display the result of the upload.
             frmConfirmation.Visible = true;
