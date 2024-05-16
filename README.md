@@ -59,4 +59,8 @@ az appservice plan create --name $appServicePlan --resource-group app-files-moun
 az webapp create --name $webapp --plan $appServicePlan --resource-group app-files-mount
 
 ```
+Mount Path of Azure Files in recently created App Services
 
+![Environment](./media/mount01.png)
+![Environment](./media/mount02.png)
+![Environment](./media/mount03.png)
