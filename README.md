@@ -71,5 +71,7 @@ Add a new Storage Mount
 - select the recently created storage account
 - select the recently create files folder
 - in mount path, type "files". The final mount path will be "/mounts/files" 
+
+
 ![Environment](./media/mount3.png)
 
