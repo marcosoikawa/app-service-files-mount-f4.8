@@ -79,7 +79,7 @@ Set Application Settings
 
 ```bash
 
-az webapp config appsettings set -g app-files-mount -n webapp --settings option=2
-az webapp config appsettings set -g app-files-mount -n webapp --settings virtualpath="/files/"
-az webapp config appsettings set -g app-files-mount -n webapp --settings virtualpath="C:\mounts\files\"
+az webapp config appsettings set -g app-files-mount -n $webapp --settings option=2
+az webapp config appsettings set -g app-files-mount -n $webapp --settings virtualpath="/files/"
+az webapp config appsettings set -g app-files-mount -n $webapp --settings virtualpath="C:\mounts\files\"
 ```
