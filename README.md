@@ -59,8 +59,17 @@ az appservice plan create --name $appServicePlan --resource-group app-files-moun
 az webapp create --name $webapp --plan $appServicePlan --resource-group app-files-mount
 
 ```
-Mount Path of Azure Files in recently created App Services
+Go to recently created App Services, in Settings/Configuration, select Path Mapping
 
 ![Environment](./media/mount01.png)
+
+In Mount storage section, select + New Azure Storage Mount
 ![Environment](./media/mount02.png)
+
+Add a new Storage Mount
+- give a name
+- select the recently created storage account
+- select the recently create files folder
+- in mount path, type "files". The final mount path will be "/mounts/files" 
 ![Environment](./media/mount03.png)
+
