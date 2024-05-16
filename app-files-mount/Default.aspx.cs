@@ -33,7 +33,7 @@ namespace app_files_mount
             //FileShare:
             string fileshare = "\\\\MAOIKA-240402\\sharefiles\\";
             string virtualpath = "/files/";
-            string phisicalpath = "C:\\mounts\\mountpath\\";
+            string phisicalpath = "C:\\mounts\\files\\";
 
 
             int.TryParse(ConfigurationManager.AppSettings["option"], out option);
@@ -42,7 +42,8 @@ namespace app_files_mount
             phisicalpath = Convert.ToString(ConfigurationManager.AppSettings["phisicalpath"]);
 
             switch (option)
-            {                
+            {
+                //For the case of traditional File Share (On-premisses or VMs scenarios)
                 case 1:
                     {
                         baseFolder = fileshare;
@@ -52,6 +53,7 @@ namespace app_files_mount
                         break;
 
                     }
+                //
                 case 2:
                     {                        
                         baseFolder = virtualpath;

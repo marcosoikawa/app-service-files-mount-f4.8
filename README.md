@@ -75,3 +75,11 @@ Add a new Storage Mount
 
 ![Environment](./media/mount3.png)
 
+Set Application Settings
+
+```bash
+
+az webapp config appsettings set -g app-files-mount -n webapp --settings option=2
+az webapp config appsettings set -g app-files-mount -n webapp --settings virtualpath="/files/"
+az webapp config appsettings set -g app-files-mount -n webapp --settings virtualpath="C:\mounts\files\"
+```
