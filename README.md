@@ -81,5 +81,5 @@ Set Application Settings
 
 az webapp config appsettings set -g app-files-mount -n $webapp --settings option=2
 az webapp config appsettings set -g app-files-mount -n $webapp --settings virtualpath="/files/"
-az webapp config appsettings set -g app-files-mount -n $webapp --settings phisicalpath="C:\mounts\files\"
+az webapp config appsettings set -g app-files-mount -n $webapp --settings phisicalpath="C:\\mounts\files\\"
 ```
