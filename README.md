@@ -64,12 +64,12 @@ Go to recently created App Services, in Settings/Configuration, select Path Mapp
 ![Environment](./media/mount1.png)
 
 In Mount storage section, select + New Azure Storage Mount
-![Environment](./media/mount02.png)
+![Environment](./media/mount2.png)
 
 Add a new Storage Mount
 - give a name
 - select the recently created storage account
 - select the recently create files folder
 - in mount path, type "files". The final mount path will be "/mounts/files" 
-![Environment](./media/mount03.png)
+![Environment](./media/mount3.png)
 
