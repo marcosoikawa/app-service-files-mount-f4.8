@@ -19,7 +19,7 @@ Tags: Azure, .NET Framework 4.8
 The main objective of this LAB is do demonstrate the how to use System.IO to work with Azure Files in App Service. This is usefull to understand how to use System.IO to work with Azure Files, for migration of ASP.NET apps to App Services. The main document is https://learn.microsoft.com/en-us/azure/app-service/configure-connect-to-azure-storage?tabs=basic%2Cportal&pivots=code-windows
 
 
-# Prerequisites
+## Prerequisites
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## Create Environment
@@ -46,3 +46,17 @@ shareName="files"
 az storage share-rm create --resource-group app-files-mount --storage-account $storageAccountName --name $shareName --quota 128 --enabled-protocols SMB --output none
 
 ```
+
+Create App Services Plan
+```bash
+appServicePlan="app-mount$RANDOM"
+webapp="webapp-mount-$RANDOM"
+
+az appservice plan create --name $appServicePlan --resource-group app-files-mount \
+--location "brazilsouth"
+
+# Create a Web App
+az webapp create --name $webapp --plan $appServicePlan --resource-group app-files-mount
+
+```
+
