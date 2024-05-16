@@ -61,7 +61,7 @@ az webapp create --name $webapp --plan $appServicePlan --resource-group app-file
 ```
 Go to recently created App Services, in Settings/Configuration, select Path Mapping
 
-![Environment](./media/mount01.png)
+![Environment](./media/mount1.png)
 
 In Mount storage section, select + New Azure Storage Mount
 ![Environment](./media/mount02.png)
